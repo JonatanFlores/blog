@@ -6,7 +6,6 @@ const Env = use("Env");
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
-/** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /**
  * Resourceful controller for interacting with users
@@ -19,9 +18,8 @@ class UserController {
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
-   * @param {View} ctx.view
    */
-  async index({ request, response, view }) {
+  async index({ request, response }) {
     const page = request.input("page", 1);
     const limit = Env.get("APP_PER_PAGE");
     const users = await User.query().paginate(page, limit);
@@ -46,10 +44,9 @@ class UserController {
    * GET users/:id
    *
    * @param {object} ctx
-   * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async show({ params, request, response }) {
+  async show({ params, response }) {
     const { id } = params;
     const user = await User.findOrFail(id);
     return response.json(user);
