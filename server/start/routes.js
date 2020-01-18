@@ -6,9 +6,13 @@ const Route = use("Route");
 Route.group(() => {
   Route.post("/login", "AuthController.login");
   Route.post("/logout", "AuthController.logout").middleware(["auth"]);
-  Route.get("/users", "UserController.index");
-  Route.get("/users/:id", "UserController.show");
-  Route.post("/users", "UserController.store").validator("StoreUser");
-  Route.put("/users/:id", "UserController.update").validator("UpdateUser");
-  Route.delete("/users/:id", "UserController.destroy");
+  Route.resource("users", "UserController")
+    .apiOnly()
+    .middleware(["auth"])
+    .validator(
+      new Map([
+        [["users.store"], ["StoreUser"]],
+        [["users.update"], ["UpdateUser"]]
+      ])
+    );
 }).prefix("api");
