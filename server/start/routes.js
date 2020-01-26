@@ -6,6 +6,7 @@ const Route = use("Route");
 Route.group(() => {
   Route.post("/login", "AuthController.login");
   Route.post("/logout", "AuthController.logout").middleware(["auth"]);
+  Route.post("/refresh", "AuthController.refresh");
   Route.resource("users", "UserController")
     .apiOnly()
     .middleware(["auth"])

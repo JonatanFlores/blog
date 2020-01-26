@@ -1,11 +1,13 @@
 "use strict";
 
-/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const User = use("App/Models/User");
-const Env = use("Env");
-
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
+
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+const User = use("App/Models/User");
+
+/** @type {import('@adonisjs/framework/src/Env')} */
+const Env = use("Env");
 
 /**
  * Resourceful controller for interacting with users
