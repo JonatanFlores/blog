@@ -2,10 +2,13 @@
   <div id="app">
     <Sidebar />
     <MainContent />
+    <div class="overlay" :class="{ toggled: isToggled }"></div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import Sidebar from '@/components/Sidebar.vue';
 import MainContent from '@/components/MainContent.vue';
 
@@ -16,6 +19,11 @@ export default {
   components: {
     Sidebar,
     MainContent,
+  },
+  computed: {
+    ...mapState('navbar', {
+      isToggled: (state) => state.isToggled,
+    }),
   },
 };
 </script>

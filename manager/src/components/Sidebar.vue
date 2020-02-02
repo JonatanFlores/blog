@@ -1,5 +1,8 @@
 <template>
-  <nav id="sidebar" :class="{ active: isToggled }">
+  <nav id="sidebar" :class="{ toggled: isToggled }">
+    <b-btn class="dismiss" @click.prevent="toggleNavigation">
+      <i class="fas fa-arrow-left"></i>
+    </b-btn>
     <div class="sidebar-header">
       <img src="@/assets/images/logo.png" alt="Logo of the Admin Area" />
       <h1>Management</h1>
@@ -8,9 +11,8 @@
   </nav>
 </template>
 
-
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import Navigation from './Navigation.vue';
 
 export default {
@@ -20,8 +22,11 @@ export default {
   },
   computed: {
     ...mapState('navbar', {
-      isToggled: state => state.isToggled,
+      isToggled: (state) => state.isToggled,
     }),
+  },
+  methods: {
+    ...mapActions('navbar', ['toggleNavigation']),
   },
 };
 </script>
