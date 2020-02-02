@@ -1,6 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav"><router-link :to="{ name: 'dashboard' }">Dashboard</router-link></div>
-    <router-view />
+    <Sidebar />
+    <MainContent />
   </div>
 </template>
+
+<script>
+import Sidebar from '@/components/Sidebar.vue';
+import MainContent from '@/components/MainContent.vue';
+
+import '@/assets/scss/styles.scss';
+
+export default {
+  name: 'app',
+  components: {
+    Sidebar,
+    MainContent,
+  },
+};
+</script>

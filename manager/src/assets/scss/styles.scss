@@ -1,0 +1,89 @@
+@import '~bootstrap';
+@import '~bootstrap-vue';
+
+body {
+  background: #f2fff5;
+  font-family: 'Roboto', sans-serif;
+}
+
+#app {
+  display: flex;
+  width: 100%;
+}
+
+#main-content,
+#sidebar {
+  flex: 1;
+}
+
+#sidebar {
+  flex-basis: 15.625rem;
+  min-width: 15.625rem;
+  max-width: 15.625rem;
+  min-height: 100vh;
+
+  background: #7386d5;
+  color: #fff;
+  transition: all 0.3s;
+
+  &.active {
+    margin-left: -15.625rem;
+  }
+
+  .sidebar-header {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0.625rem;
+    background: #6d7fcc;
+    h1 {
+      font-size: 1.5rem;
+      margin-left: 0.625rem;
+      margin-bottom: auto;
+      margin-top: auto;
+    }
+  }
+
+  ul {
+    &.components {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid #47748b;
+    }
+
+    p {
+      color: #fff;
+      padding: 0.625rem;
+    }
+
+    li {
+      & > a.router-link-active {
+        color: #7386d5;
+        background: #e1e6f7;
+      }
+
+      a {
+        color: inherit;
+        padding: 0.625rem;
+        font-size: 1.1rem;
+        display: block;
+        text-decoration: none;
+        transition: all 0.3s;
+
+        &:hover {
+          color: #7386d5;
+          background: #fff;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -15.625rem;
+
+    &.active {
+      margin-left: 0;
+    }
+  }
+}
